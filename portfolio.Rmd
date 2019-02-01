@@ -1,0 +1,73 @@
+---
+title: "PS811 Portfolio"
+author: "Juan Qian"
+output:
+  html_document: 
+    toc: true ## table of contents
+    code_folding: hide
+---
+```{r setup, include=FALSE}
+## Defaults for R chunks
+knitr::opts_chunk$set(echo = TRUE, ## echo = TRUE means code will show
+                      warning=FALSE, ## supress warnings and messages from R
+                      message=FALSE,
+                      fig.path='Figs/', ## where to save figures
+                      fig.height = 3, ## default figure size (can differ in each chunk)
+                      fig.width = 3)
+
+## Add any R packages you require. 
+## Here are some we will use in 811:
+requires <- c("tidyverse", ## tidyverse includes dplyr and ggplot2
+              "magrittr",
+              "foreign",
+              "readstata13",
+              "here")
+
+## Install any you don't have
+to_install <- c(requires %in% rownames(installed.packages()) == FALSE)
+install.packages(c(requires[to_install], "NA"), repos = "https://cloud.r-project.org/" )
+
+## Load all required R packages
+library(tidyverse)
+library(ggplot2); theme_set(theme_minimal())
+library(magrittr)
+library(here)
+```
+<!-- The above header sets everything up. -->
+
+
+
+
+
+<!-- Replace the below with bit about you. -->
+### Personal Background
+I am a doctoral student in the Political Science Department at the University of Wisconsin-Madison. My fields of interest are political methodology and comparative politics.
+
+Prior to graduate school, I served as an Associate in Research at the Margolis Center for Health Policy at Duke University from 2016-18. Additionally, I worked for several government agencies and and think tanks, including Minnesota Senate, Office of Minnesota Governor, and American Enterprise Institute.
+
+My hometown is Nanjing, a city in eastern China. I graduated from Macalester College with a B.A. in political science in 2014 and obtained his Master of Public Policy from Georgetown University in 2016.
+
+### Research Interests
+I am interested identities and narratives of social groups, and how the people's identities influenced their political behavior and interaction with political institutions. Specifically, I am interested in exploring the reason why some ethnic minority groups in China assimilate with the mainstream society, while other groups chose to resist the forced assimilation by authoritarian institutions.
+
+Methodologically, I am interested in developing automated text analysis (reuse, topic models and other Bayesian classifiers, content analysis) to assist my research in group identities and narratives.
+
+### Questions I hope to answer
+What drives an ethnic minority group's collective decision to assimilate with the majority, or retain their unique identities?
+
+How does government policies influence a group's decision to assimilate or resist?
+
+### Methods
+Machine Learning, Automated Text Analysis, Formal Modeling, Agent-based Models.
+
+### Relevant Data
+China Family Panel Studies (https://www.icpsr.umich.edu/icpsrweb/ICPSR/studies/36524)
+
+China Multi-Generational Panel Dataset, Liaoning (CMGPD-LN), 1749-1909 (https://www.icpsr.umich.edu/icpsrweb/ICPSR/studies/27063)
+
+China, Europe & Great Divergence (http://doi.org/10.3886/E105383V1)
+And many others.
+
+---
+
+
