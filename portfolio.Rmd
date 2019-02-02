@@ -53,9 +53,7 @@ I am interested identities and narratives of social groups, and how the people's
 Methodologically, I am interested in developing automated text analysis (reuse, topic models and other Bayesian classifiers, content analysis) to assist my research in group identities and narratives.
 
 ### Questions I hope to answer
-What drives an ethnic minority group's collective decision to assimilate with the majority, or retain their unique identities?
-
-How does government policies influence a group's decision to assimilate or resist?
+In China, does a region's economic performance affect its residents' level of support to the authorities?
 
 ### Methods
 Machine Learning, Automated Text Analysis, Formal Modeling, Agent-based Models.
