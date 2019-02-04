@@ -66,6 +66,14 @@ China Multi-Generational Panel Dataset, Liaoning (CMGPD-LN), 1749-1909 (https://
 China, Europe & Great Divergence (http://doi.org/10.3886/E105383V1)
 And many others.
 
+<!-- 
+Juan,
+These all look like great choices from which to select a few interesting variables. You may want to make a separate R script that saves a smaller dataset in a data subfolder and then load it into this script. I'll be interested to see it!
+If you have texts (e.g. open survey responses) and want to do your project on word or phrase repetition or frequencies, let's talk about that during office hours. There will be some processing work to do early on.
+Best,
+Devin 
+-->
+
 ---
 
 
