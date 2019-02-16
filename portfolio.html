@@ -247,7 +247,7 @@ $(document).ready(function () {
 <div id="summary" class="section level3">
 <h3>Summary</h3>
 <p>The dataset I use to explore the above question is the China Family Panel Studies (<a href="https://www.icpsr.umich.edu/icpsrweb/ICPSR/studies/36524" class="uri">https://www.icpsr.umich.edu/icpsrweb/ICPSR/studies/36524</a>)</p>
-<p>Below is the summary statistic of the survey respondents’ annual yearly income in 2014, as well as the citizens’ attitudes toward government approval:</p>
+<p>Below is the summary statistic of the survey respondents’ annual yearly income in 2014, as well as the citizens’ attitudes toward government approval. Government approval is measured using an ordinal rank of 1-5, with “1” as most satisfied and “5” as least satisfied.</p>
 <pre class="r"><code>dat &lt;- readstata13::read.dta13(&quot;/Users/jingyuanqian/811/CFPS.dta&quot;)
 summary(dat$p_income)</code></pre>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
