@@ -66,6 +66,19 @@ China Multi-Generational Panel Dataset, Liaoning (CMGPD-LN), 1749-1909 (https://
 China, Europe & Great Divergence (http://doi.org/10.3886/E105383V1)
 And many others.
 
+###Summary
+The dataset I use to explore the above question is the China Family Panel Studies (https://www.icpsr.umich.edu/icpsrweb/ICPSR/studies/36524)
+
+Below is the summary statistic of the survey respondents' annual yearly income in 2014, as well as the citizens' attitudes toward government approval:
+```{r data, fig.width = 5}
+dat <- readstata13::read.dta13("/Users/jingyuanqian/811/CFPS.dta")
+summary(dat$p_income)
+hist(dat$p_income, main = "Distribution of Resident Income", xlab = "Income", ylab = "Frequency")
+summary(dat$qn1101)
+hist(dat$qn1101, main = "Distribution of Goverment Satisfaction", xlab = "Government Approval Score", ylab = "Frequency")
+```
+
+
 <!-- 
 Juan,
 These all look like great choices from which to select a few interesting variables. You may want to make a separate R script that saves a smaller dataset in a data subfolder and then load it into this script. I'll be interested to see it!
