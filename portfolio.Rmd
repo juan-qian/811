@@ -75,7 +75,7 @@ Below is the summary statistic of the survey respondents' annual yearly income i
 Below is the summary statistic of the survey respondents' annual yearly income in 2014, as well as the citizens' attitudes toward government approval:
 >>>>>>> 82814c03a5c3713cd2e4b4329037bed28efc9d25
 ```{r data, fig.width = 5}
-dat <- readstata13::read.dta13("/Users/jingyuanqian/811/CFPS.dta")
+dat <- readstata13::read.dta13(here("data/CFPS.dta"))
 summary(dat$p_income)
 hist(dat$p_income, main = "Distribution of Resident Income", xlab = "Income", ylab = "Frequency")
 summary(dat$qn1101)
