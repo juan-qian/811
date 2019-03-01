@@ -79,6 +79,12 @@ summary(dat$qn1101)
 hist(dat$qn1101, main = "Distribution of Goverment Satisfaction", xlab = "Government Approval Score", ylab = "Frequency")
 ```
 
+###Experimental GGPlot Data Visualization:
+A ggplot2 Graph showing the instinctive relationship between Communist Party membership and income:
+```{r ggplot, fig.width = 5}
+e <- ggplot(dat, aes(cfps_party, p_income), xlab="Party Membership", ylab="Income")
+e + geom_jitter(height = 2, width = 2)
+```
 
 <!-- 
 Juan,
