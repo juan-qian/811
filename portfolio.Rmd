@@ -85,8 +85,6 @@ A ggplot2 Graph showing the instinctive relationship between Communist Party mem
 e <- ggplot(dat, aes(cfps_party, p_income), xlab="Party Membership", ylab="Income")
 e + geom_jitter(height = 2, width = 2)
 ```
-<<<<<<< HEAD
-Now, try commit:
 =======
 
 >>>>>>> ca182ea8a0814ff65de47a92a934d34619502a23
