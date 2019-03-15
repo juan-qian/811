@@ -48,54 +48,35 @@ Prior to graduate school, I served as an Associate in Research at the Margolis C
 My hometown is Nanjing, a city in eastern China. I graduated from Macalester College with a B.A. in political science in 2014 and obtained his Master of Public Policy from Georgetown University in 2016.
 
 ### Research Interests
-I am interested identities and narratives of social groups, and how the people's identities influenced their political behavior and interaction with political institutions. Specifically, I am interested in exploring the reason why some ethnic minority groups in China assimilate with the mainstream society, while other groups chose to resist the forced assimilation by authoritarian institutions.
-
-Methodologically, I am interested in developing automated text analysis (reuse, topic models and other Bayesian classifiers, content analysis) to assist my research in group identities and narratives.
+I am interested in how the Chinese citizens' attitudes toward government vary by province and a respondent's personal characteristics. 
 
 ### Questions I hope to answer
-In China, does a region's economic performance affect its residents' level of support to the authorities?
-
-### Methods
-Machine Learning, Automated Text Analysis, Formal Modeling, Agent-based Models.
+Does a citizen's approval of Chinese government performance varies by province and gender?
 
 ### Relevant Data
-China Family Panel Studies (https://www.icpsr.umich.edu/icpsrweb/ICPSR/studies/36524)
+China Family Panel Studies (https://www.icpsr.umich.edu/icpsrweb/ICPSR/studies/36524)'s 2014 data
 
 China Multi-Generational Panel Dataset, Liaoning (CMGPD-LN), 1749-1909 (https://www.icpsr.umich.edu/icpsrweb/ICPSR/studies/27063)
 
-China, Europe & Great Divergence (http://doi.org/10.3886/E105383V1)
-And many others.
-
-###Summary Statistics
-The dataset I use to explore the above question is the China Family Panel Studies (https://www.icpsr.umich.edu/icpsrweb/ICPSR/studies/36524)
-
-Below is the summary statistic of the survey respondents' annual yearly income in 2014, as well as the citizens' attitudes toward government approval. Government approval is measured using an ordinal rank of 1-5, with "1" as most satisfied and "5" as least satisfied.
-
-```{r data, fig.width = 5}
-dat <- readstata13::read.dta13(here("data/CFPS.dta"))
-summary(dat$p_income)
-hist(dat$p_income, main = "Distribution of Resident Income", xlab = "Income (yuan)", ylab = "Frequency")
-summary(dat$qn1101)
-hist(dat$qn1101, main = "Distribution of Goverment Satisfaction", xlab = "Government Approval Score", ylab = "Frequency")
+### Data Visualization
+To answer this question, I calculated and created a plot that shows the citizens' average attitudes toward government in each province, breaking up by gender.
+```{r ggplot, fig.height = 6, fig.width = 6}
+dat <- read.csv("data/CFPS.csv")
+ggplot() +
+  # define y = state for all layers
+  aes(y = dat$province) +
+  # x = points for each actor
+  geom_point(aes(x = dat$male_approval), shape = "M", color= "blue", size=3) + 
+  geom_point(aes(x = dat$female_approval), shape = "F", color= "red", size=3) +
+  ggtitle("PRC Citizen's Attitudes toward Government, by Province") +
+  geom_segment(aes(x = dat$male_approval, 
+                   xend = dat$female_approval, 
+                   yend = dat$province), 
+               color = "grey", 
+               size = 3, 
+               lineend = "round", 
+               alpha = .3) +
+  labs(y = "Province", 
+       x = "Local Government Approval (best=1, worst=5)", size=3)
 ```
-
-###Experimental GGPlot Data Visualization:
-A ggplot2 Graph showing the instinctive relationship between Communist Party membership and income:
-```{r ggplot, fig.width = 5}
-e <- ggplot(dat, aes(cfps_party, p_income), xlab="Party Membership", ylab="Income")
-e + geom_jitter(height = 2, width = 2)
-```
-=======
-
->>>>>>> ca182ea8a0814ff65de47a92a934d34619502a23
-<!-- 
-Juan,
-These all look like great choices from which to select a few interesting variables. You may want to make a separate R script that saves a smaller dataset in a data subfolder and then load it into this script. I'll be interested to see it!
-If you have texts (e.g. open survey responses) and want to do your project on word or phrase repetition or frequencies, let's talk about that during office hours. There will be some processing work to do early on.
-Best,
-Devin 
--->
-
----
-
 
