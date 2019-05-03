@@ -50,8 +50,10 @@ My hometown is Nanjing, a city in eastern China. I graduated from Macalester Col
 ### Research Interests
 I am interested in how the Chinese citizens' attitudes toward government vary by province and a respondent's personal characteristics. 
 
-### Questions I hope to answer
-Does a citizen's approval of Chinese government performance varies by province and gender?
+### Motivation & Background
+The core question is: In a specific province, does gender affect one's perception of local government performance?
+## Why Gender Matters?
+Many studies find that males and females have different views on certain political issues. Under authoritarian regimes specifically,
 
 ### Relevant Data
 China Family Panel Studies (https://www.icpsr.umich.edu/icpsrweb/ICPSR/studies/36524)'s 2014 data
@@ -60,23 +62,28 @@ China Multi-Generational Panel Dataset, Liaoning (CMGPD-LN), 1749-1909 (https://
 
 ### Data Visualization
 To answer this question, I calculated and created a plot that shows the citizens' average attitudes toward government in each province, breaking up by gender.
+
+
 ```{r ggplot, fig.height = 6, fig.width = 6}
 dat <- read.csv("data/CFPS.csv")
+## Read data from China Family Panel Studies into the dataset
+dat$maleapproval <- 5-dat$male_approval ## Rescaled my government approaval scale from 1(best), 5(worst) to 1(worst), 5(best)
+dat$femaleapproval <- 5-dat$female_approval 
 ggplot() +
-  # define y = state for all layers
+  # define y = province level for all layers
   aes(y = dat$province) +
   # x = points for each actor
-  geom_point(aes(x = dat$male_approval), shape = "M", color= "blue", size=3) + 
-  geom_point(aes(x = dat$female_approval), shape = "F", color= "red", size=3) +
+  geom_point(aes(x = dat$maleapproval), shape = "M", color= "blue", size=3) + 
+  geom_point(aes(x = dat$femaleapproval), shape = "F", color= "red", size=3) +
   ggtitle("PRC Citizen's Attitudes toward Government, by Province") +
-  geom_segment(aes(x = dat$male_approval, 
-                   xend = dat$female_approval, 
+  geom_segment(aes(x = dat$maleapproval, 
+                   xend = dat$femaleapproval, 
                    yend = dat$province), 
-               color = "grey", 
+               color = dat$regioncolor, 
                size = 3, 
                lineend = "round", 
                alpha = .3) +
   labs(y = "Province", 
-       x = "Local Government Approval (best=1, worst=5)", size=3)
+       x = "Local Government Approval (worst=1, best=5)", size=3)
 ```
 
