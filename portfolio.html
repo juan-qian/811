@@ -529,6 +529,32 @@ dat[, 1:4]</code></pre>
 <div id="data-visualization" class="section level3">
 <h3>Data Visualization</h3>
 <p>To answer this question, I calculated and created a plot that shows the citizens’ average attitudes toward government in each province, breaking up by gender. The original survey question takes the following form: “What do you say about your local government’s performance in the past year?” The x-axis shows a scale of 1-5, with 1 representing the worst and 5 representing the best.</p>
+<pre class="r"><code>dat2 &lt;- read.dta13(&quot;CFPS.dta&quot;)
+reg&lt;-lm(formula = dat2$performance ~ dat2$p_income + dat2$p_wage + dat2$cfps_gender + dat2$cfps_party)
+summary(reg)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = dat2$performance ~ dat2$p_income + dat2$p_wage + 
+##     dat2$cfps_gender + dat2$cfps_party)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -2.7077 -0.4031  0.5056  0.6435  2.3678 
+## 
+## Coefficients:
+##                    Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)       3.356e+00  7.808e-03 429.879  &lt; 2e-16 ***
+## dat2$p_income     3.512e-05  5.096e-06   6.893 5.59e-12 ***
+## dat2$p_wage      -3.687e-05  5.081e-06  -7.256 4.07e-13 ***
+## dat2$cfps_gender  4.662e-02  1.075e-02   4.337 1.45e-05 ***
+## dat2$cfps_party   2.584e-03  3.452e-03   0.749    0.454    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.9171 on 30081 degrees of freedom
+##   (32 observations deleted due to missingness)
+## Multiple R-squared:  0.003583,   Adjusted R-squared:  0.003451 
+## F-statistic: 27.05 on 4 and 30081 DF,  p-value: &lt; 2.2e-16</code></pre>
 
 <pre class="r"><code>## Read data from China Family Panel Studies into the dataset
 dat$maleapproval &lt;- 5-dat$male_approval ## Rescaled my government approaval scale from 1(best), 5(worst) to 1(worst), 5(best)
