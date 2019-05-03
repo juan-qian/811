@@ -1,5 +1,5 @@
 ---
-title: "PS811 Portfolio"
+title: "PS811: Introduction to Statistical Computing \\   Final Project Portfolio"
 author: "Juan Qian"
 output:
   html_document: 
@@ -43,28 +43,35 @@ library(here)
 ### Personal Background
 I am a doctoral student in the Political Science Department at the University of Wisconsin-Madison. My fields of interest are political methodology and comparative politics.
 
-Prior to graduate school, I served as an Associate in Research at the Margolis Center for Health Policy at Duke University from 2016-18. Additionally, I worked for several government agencies and and think tanks, including Minnesota Senate, Office of Minnesota Governor, and American Enterprise Institute.
-
-My hometown is Nanjing, a city in eastern China. I graduated from Macalester College with a B.A. in political science in 2014 and obtained his Master of Public Policy from Georgetown University in 2016.
+My hometown is Nanjing, a city in eastern China. I graduated from Macalester College (Minnesota) with a B.A. in political science and history in 2014 and obtained my Master's degree in public policy and economic policy from Georgetown University in 2016.
 
 ### Research Interests
-I am interested in how the Chinese citizens' attitudes toward government vary by province and a respondent's personal characteristics. 
+In general, I am interested in the formation, evolution and spread of identities and narratives within and between groups of people. Region-wise, I am interested in the ethnic identities, assimilation and resistence of minority groups in modern China.
 
 ### Motivation & Background
-The core question is: In a specific province, does gender affect one's perception of local government performance?
-## Why Gender Matters?
-Many studies find that males and females have different views on certain political issues. Under authoritarian regimes specifically,
+The core question is: does gender affect one's perception of local government performance in different provinces?
 
-### Relevant Data
-China Family Panel Studies (https://www.icpsr.umich.edu/icpsrweb/ICPSR/studies/36524)'s 2014 data
 
-China Multi-Generational Panel Dataset, Liaoning (CMGPD-LN), 1749-1909 (https://www.icpsr.umich.edu/icpsrweb/ICPSR/studies/27063)
+#### Why does gender matters in political opinion research?
+Many studies find that males and females have different views on certain political issues. Under authoritarian regimes specifically, some studies suggest that women show more apathy towards politics than men. The difference in attitudes towards politics are specifically salient in conservative, patriarchical societies where women are confined to their traditional gender roles. Whether gender affects poliitical views motivates me to perform this data visualization.
+
+
+#### Why are we measuring perception towards local government performance?
+The reason why I focus on measuring local government performance is twofold. First of all, the public approval rate of China's central government remains to be a politically sensitive issue, and thus few data on Central Government approval are currently available. Even those public opinion surveys about Central Government have severe measurement errors, since the respondents are likely to be hesitant to express their true feelings of government under the current climate.
+
+Secondly, the public opinion towards local authorities shows great variance by region. The pattern of regional governance differ greatly from province to province, so does the resident's public opinion. Therefore, I expect that using local government approval data can show greater heterogeneity of opinions across regions and gender.
+
+#### How is "local government" defined?
+China has three levels of government units: province, county/district, and township. In this survey, "local government" refers to the county/district level, which includes all government agencies most relevant to the everyday lives of Chinese residents.
+
+#### Relevant Data
+I collect my data primarily from two sources: China Family Panel Studies (https://www.icpsr.umich.edu/icpsrweb/ICPSR/studies/36524)'s 2014 data and Asia Barometer (http://www.asianbarometer.org/survey/survey-countries)
 
 ### Data Visualization
-To answer this question, I calculated and created a plot that shows the citizens' average attitudes toward government in each province, breaking up by gender.
+To answer this question, I calculated and created a plot that shows the citizens' average attitudes toward government in each province, breaking up by gender. The original survey question takes the following form: “What do you say about your local government's performance in the past year?" The x-axis shows a scale of 1-5, with 1 representing the worst and 5 representing the best.
 
-
-```{r ggplot, fig.height = 6, fig.width = 6}
+\centering
+```{r ggplot, fig.height = 6, fig.width = 8}
 dat <- read.csv("data/CFPS.csv")
 ## Read data from China Family Panel Studies into the dataset
 dat$maleapproval <- 5-dat$male_approval ## Rescaled my government approaval scale from 1(best), 5(worst) to 1(worst), 5(best)
@@ -75,7 +82,7 @@ ggplot() +
   # x = points for each actor
   geom_point(aes(x = dat$maleapproval), shape = "M", color= "blue", size=3) + 
   geom_point(aes(x = dat$femaleapproval), shape = "F", color= "red", size=3) +
-  ggtitle("PRC Citizen's Attitudes toward Government, by Province") +
+  ggtitle("PRC Citizen's Attitudes toward Local Government Performance, by Province") +
   geom_segment(aes(x = dat$maleapproval, 
                    xend = dat$femaleapproval, 
                    yend = dat$province), 
