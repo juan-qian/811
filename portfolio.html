@@ -494,14 +494,43 @@ $(document).ready(function () {
 <div id="relevant-data" class="section level4">
 <h4>Relevant Data</h4>
 <p>I collect my data primarily from two sources: China Family Panel Studies (<a href="https://www.icpsr.umich.edu/icpsrweb/ICPSR/studies/36524" class="uri">https://www.icpsr.umich.edu/icpsrweb/ICPSR/studies/36524</a>)’s 2014 data and Asia Barometer (<a href="http://www.asianbarometer.org/survey/survey-countries" class="uri">http://www.asianbarometer.org/survey/survey-countries</a>)</p>
+<pre class="r"><code>dat &lt;- read.csv(&quot;data/CFPS.csv&quot;)
+dat[, 1:4]</code></pre>
+<pre><code>##          province female_approval male_approval region
+## 1           Anhui        2.541254      2.493750  South
+## 2         Beijing        2.664000      2.697479  North
+## 3       Chongqing        2.327731      2.243902  South
+## 4          Fujian        2.593220      2.442529  South
+## 5           Gansu        2.618862      2.575419  North
+## 6       Guangdong        2.779180      2.743436  South
+## 7         Guangxi        2.588997      2.567073  South
+## 8         Guizhou        2.514107      2.502591  South
+## 9          Hainan        3.000000      4.000000  South
+## 10          Hebei        2.650685      2.631022  North
+## 11   Heilongjiang        2.764822      2.823651  North
+## 12          Henan        2.661681      2.585783  North
+## 13          Hubei        2.487179      2.378505  North
+## 14          Hunan        2.716456      2.786260  South
+## 15 Inner mongolia        3.250000      3.400000  North
+## 16        Jiangsu        2.816568      2.770968  South
+## 17        Jiangxi        2.812977      2.690840  South
+## 18          Jilin        2.641221      2.631373  North
+## 19       Liaoning        2.632972      2.613065  North
+## 20        Shaanxi        2.590643      2.755287  North
+## 21       Shandong        2.530749      2.489740  North
+## 22       Shanghai        2.691626      2.633300  South
+## 23         Shanxi        2.651429      2.654815  North
+## 24        Sichuan        2.572377      2.492308  South
+## 25        Tianjin        3.067308      3.235294  North
+## 26         Yunnan        2.300000      2.296748  South
+## 27       Zhejiang        2.837748      2.608844  South</code></pre>
 </div>
 </div>
 <div id="data-visualization" class="section level3">
 <h3>Data Visualization</h3>
 <p>To answer this question, I calculated and created a plot that shows the citizens’ average attitudes toward government in each province, breaking up by gender. The original survey question takes the following form: “What do you say about your local government’s performance in the past year?” The x-axis shows a scale of 1-5, with 1 representing the worst and 5 representing the best.</p>
 
-<pre class="r"><code>dat &lt;- read.csv(&quot;data/CFPS.csv&quot;)
-## Read data from China Family Panel Studies into the dataset
+<pre class="r"><code>## Read data from China Family Panel Studies into the dataset
 dat$maleapproval &lt;- 5-dat$male_approval ## Rescaled my government approaval scale from 1(best), 5(worst) to 1(worst), 5(best)
 dat$femaleapproval &lt;- 5-dat$female_approval 
 ggplot() +
